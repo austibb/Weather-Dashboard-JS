@@ -1,7 +1,7 @@
 
 function fetchWeather() {
     // gets information based on location name
-    fetch(buildURL(url + 'geo/1.0/', loc, '', '', ''), {
+    fetch(buildURL(url + 'geo/1.0/', loc, coords, ''), {
         method: 'GET', //GET is the default.
         credentials: 'same-origin', // include, *same-origin, omit
         redirect: 'follow', // manual, *follow, error
@@ -39,10 +39,16 @@ function fetchWeather() {
     //     });
 };
 
-function buildURL(url, loc, latitude, longitude, excludes) {
-    let callURL = '';
-    callURL = callURL.concat(url, '?lat=', latitude, '&lon=', longitude);
-    if (excludes) {
+function buildURL(url, loca, coordinates, excludes) {
+    let callURL = url;
+    // callURL = callURL.concat(url, '?lat=', latitude, '&lon=', longitude);
+    if (loca !== '') {
+        callURL = callURL.concat('direct?q=', loca);
+    }
+    if (latitude !== '') {
+        callURL = callURL.concat('?lat=', coordinates[0], '?lon=', coordinates[1]);
+    }
+    if (excludes !== '') {
         callURL = callURL.concat('&exclude=', excludes);
         // excluded category in plain text separated by comma. 
         // ex. &exclude=hourly,daily,weekly&appid=...etc.
