@@ -1,5 +1,6 @@
 
 function fetchWeather() {
+    console.log('ooga');
     // gets information based on location name
     fetch(buildURL(url + 'geo/1.0/', loc, coords, ''), {
         method: 'GET', //GET is the default.
