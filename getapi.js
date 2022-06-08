@@ -55,5 +55,6 @@ function buildURL(url, loca, coordinates, excludes) {
         // ex. &exclude=hourly,daily,weekly&appid=...etc.
     }
     callURL = callURL.concat('&appid=', key);
+    console.log(callURL);
     return callURL;
 };
