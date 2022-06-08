@@ -46,7 +46,7 @@ function buildURL(url, loca, coordinates, excludes) {
     if (loca !== '') {
         callURL = callURL.concat('direct?q=', loca);
     }
-    if (coordinates !== '') {
+    if (coordinates[0] !== '') {
         callURL = callURL.concat('?lat=', coordinates[0], '?lon=', coordinates[1]);
     }
     if (excludes !== '') {

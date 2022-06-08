@@ -9,7 +9,7 @@ const key = '1d9471fd03c19d7e6f53a7bb96a4f2fa';
 
 // data variables
 var loc = 'Berkeley';
-var coords = ['37.8719', '122.2585'];
+var coords = ['',''];
 var excludes;
 
 
