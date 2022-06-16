@@ -4,7 +4,7 @@ function fetchWeather() {
     // gets information based on location name
     fetch(buildURL(url + 'geo/1.0/', loc, coords, ''), {
         method: 'GET', //GET is the default.
-        credentials: 'same-origin', // include, *same-origin, omit
+        credentials: 'omit', // include, *same-origin, omit
         redirect: 'follow', // manual, *follow, error
     })
         .then(function (response) {
@@ -13,31 +13,6 @@ function fetchWeather() {
         .then(function (data) {
             console.log(data);
         });
-        //data/2.5/
-    // gets todays weather forecast data
-    // fetch(buildURL(url + 'data/2.5/', '', '', '', ''), {
-    //     method: 'GET', //GET is the default.
-    //     // credentials: 'same-origin', // include, *same-origin, omit
-    //     // redirect: 'follow', // manual, *follow, error
-    // })
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-    //     .then(function (data) {
-    //         console.log(data);
-    //     });
-    // // gets 5 day forecast data 
-    // fetch(buildURL(url + 'data/2.5/', '', '', '', ''), {
-    //     method: 'GET', //GET is the default.
-    //     // credentials: 'same-origin', // include, *same-origin, omit
-    //     // redirect: 'follow', // manual, *follow, error
-    // })
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-    //     .then(function (data) {
-    //         console.log(data);
-    //     });
 };
 
 function buildURL(url, loca, coordinates, excludes) {
@@ -58,3 +33,18 @@ function buildURL(url, loca, coordinates, excludes) {
     console.log(callURL);
     return callURL;
 };
+
+function callToday() {
+    fetch(url + 'data/2.5/weather?q=' + loc + '&appid=' + key, {
+        method: 'GET', //GET is the default.
+        credentials: 'include', // include, *same-origin, omit
+        redirect: 'follow', // manual, *follow, error
+    })
+        .then(function (response) {
+            console.log(response);
+            // return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        });
+}

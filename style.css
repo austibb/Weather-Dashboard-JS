@@ -1,0 +1,21 @@
+#body {
+    display: flex;
+};
+
+#hero {
+    top: 0;
+};
+
+#left, #right {
+    display: block;
+}
+
+#left {
+    left: 0;
+    width: 25vw;
+};
+
+#right {
+    right: 0;
+    width: 75vw
+};
