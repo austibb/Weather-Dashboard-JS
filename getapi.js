@@ -1,8 +1,9 @@
 
-function fetchWeather() {
+var fetchWeather = function(lat, lon) {
     console.log('ooga');
     // gets information based on location name
-    fetch(buildURL(url + 'geo/1.0/', loc, coords, ''), {
+    https://api.openweathermap.org/data/3.0/onecall?lat=37.8716&lon=-122.2728&appid=1d9471fd03c19d7e6f53a7bb96a4f2fa
+    fetch(url + 'data/3.0/onecall?lat=' + lat + '&lon=' + lon + '&appid=' + key, {
         method: 'GET', //GET is the default.
         credentials: 'omit', // include, *same-origin, omit
         redirect: 'follow', // manual, *follow, error
@@ -34,15 +35,15 @@ function buildURL(url, loca, coordinates, excludes) {
     return callURL;
 };
 
-function callToday() {
-    fetch(url + 'data/2.5/weather?q=' + loc + '&appid=' + key, {
+getCoords = function(city) {
+    fetch(url + 'data/2.5/weather?q=' + city + '&appid=' + key, {
         method: 'GET', //GET is the default.
         credentials: 'include', // include, *same-origin, omit
         redirect: 'follow', // manual, *follow, error
     })
         .then(function (response) {
-            console.log(response);
-            // return response.json();
+            // console.log(response);
+            return response.json();
         })
         .then(function (data) {
             console.log(data);
