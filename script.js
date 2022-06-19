@@ -11,7 +11,9 @@ $(function () {
         // calls function to display today's forecase, as well as the 5 day forecast
         // callToday
         let x = getCoords(city);
-        lat, lon = x.lat, x.lon;
+        console.log(x);
+        let lat= x.lat;
+        let lon = x.lon;
         cityData = fetchWeather(lat, lon);
         showToday(testObject);
         showForecast(test5);

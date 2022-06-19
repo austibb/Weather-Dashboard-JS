@@ -36,16 +36,52 @@ function buildURL(url, loca, coordinates, excludes) {
 };
 
 getCoords = function(city) {
-    fetch(url + 'data/2.5/weather?q=' + city + '&appid=' + key, {
-        method: 'GET', //GET is the default.
-        credentials: 'include', // include, *same-origin, omit
-        redirect: 'follow', // manual, *follow, error
+    let i = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=' + key;
+    // fetch(i, {
+    //     method: 'GET', //GET is the default.
+    //     credentials: 'include', // include, *same-origin, omit
+    //     redirect: 'follow', // manual, *follow, error
+    // })
+    //     .then(function (response) {
+    //         // console.log(response);
+    //         return response.json();
+    //     })
+    //     .then(function (data) {
+    //         console.log(data);
+    //     });
+    fetch('https://api.openweathermap.org/geo/1.0/direct?q=berkeley&limit=1&appid=1d9471fd03c19d7e6f53a7bb96a4f2fa')
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
     })
-        .then(function (response) {
-            // console.log(response);
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-        });
+    .then(function (data) {
+      if (data.length === 0) {
+        // showError();
+        return;
+      }
+    //   getWeather(city, data);
+    //   toStorage(city);
+    })
 }
+
+function getCity(city) {
+    let requestGeo = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`;
+  
+    fetch(requestGeo)
+      .then((response) => {
+        if (response.ok) {
+          let x = response.json();
+          console.log(x);
+          return x;
+        }
+      })
+      .then(function (data) {
+        if (data.length === 0) {
+          showError();
+          return;
+        }
+        // getWeather(city, data);
+        // toStorage(city);
+      })
+  }
